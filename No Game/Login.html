@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="StyleLogin.css">
+</head>
+<body>
+    <div class="box">
+        <h1 data-text="Login">Login</h1>
+        <h2 id="alerta"></h2>
+        <input type="text" placeholder="Username" id="name">
+        <input type="password" placeholder="Password" id="lock">
+        <input type="button" onclick="Logando()" value="Sign Up">
+
+    </div>
+</body>
+</html>
+<script>
+
+var let = "qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM"
+var userLength = 10;
+var user = "";
+for(var i = 0; userLength>i;i++){
+    var randomNumber = Math.floor(Math.random() * let.length);
+    user += let.substring(randomNumber,randomNumber+1)
+}
+
+var num = "01234567890qwertyuiopasdfghjklçzxcvbnmQWERTYUIOPASDFGHJKLÇZXCVBNM!#${}[]/?\|=+<>"
+var passwordLength = 16;
+var password = "";
+for(var d = 0; passwordLength>d;d++){
+    var randomNumber = Math.floor(Math.random() * num.length);
+    password += num.substring(randomNumber,randomNumber+1)
+}
+
+var alerta = document.getElementById("alerta")
+
+function Logando(){
+    var elementoIn = document.getElementById("invalido");
+    var elementName = document.getElementById("name").value;
+    var elementLock = document.getElementById("lock").value;
+
+    if(elementLock == password && elementName == user){
+        location = "menu.html"
+    }else if(elementName == "" && elementLock == "" || elementLock == "" || elementName == ""){
+            alerta.innerHTML = "Preencha";
+        }
+        else if(elementLock == password && elementName != user || elementLock != password && elementName == user ){
+            alerta.innerHTML = "Senha ou Nome estão incorretas";
+        }else{
+            alerta.innerHTML = "Dados invalidos"
+            }
+        }  
+    
+console.log(user)
+console.log(password)
+
+
+</script>
